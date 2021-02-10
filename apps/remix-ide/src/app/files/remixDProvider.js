@@ -23,23 +23,23 @@ module.exports = class RemixDProvider {
     })
 
     this._appManager.on('remixd', 'folderAdded', (path) => {
-      this.event.trigger('folderAdded', [this.addPrefix(path)])
+      this.event.trigger('folderAdded', [path])
     })
 
     this._appManager.on('remixd', 'fileAdded', (path) => {
-      this.event.trigger('fileAdded', [this.addPrefix(path)])
+      this.event.trigger('fileAdded', [path])
     })
 
     this._appManager.on('remixd', 'fileChanged', (path) => {
-      this.event.trigger('fileChanged', [this.addPrefix(path)])
+      this.event.trigger('fileChanged', [path])
     })
 
     this._appManager.on('remixd', 'fileRemoved', (path) => {
-      this.event.trigger('fileRemoved', [this.addPrefix(path)])
+      this.event.trigger('fileRemoved', [path])
     })
 
     this._appManager.on('remixd', 'fileRenamed', (oldPath, newPath) => {
-      this.event.trigger('fileRemoved', [this.addPrefix(oldPath), this.addPrefix(newPath)])
+      this.event.trigger('fileRemoved', [oldPath, newPath])
     })
 
     this._appManager.on('remixd', 'rootFolderChanged', () => {
@@ -179,12 +179,6 @@ module.exports = class RemixDProvider {
     if (path[0] === '/') return path.substring(1)
     if (path === '') return '/'
     return path
-  }
-
-  addPrefix (path) {
-    if (path.indexOf(this.type + '/') === 0) return path
-    if (path[0] === '/') return 'localhost' + path
-    return 'localhost/' + path
   }
 
   resolveDirectory (path, callback) {

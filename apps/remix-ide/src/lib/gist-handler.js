@@ -42,7 +42,7 @@ function GistHandler (_window) {
   }
 
   this.loadFromGist = (params, fileManager) => {
-    const gistProvider = fileManager.fileProviderOf('browser')
+    const gistProvider = fileManager.getProvider('browser')
     const self = this
     return self.handleLoad(params, function (gistId) {
       request.get({

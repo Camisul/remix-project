@@ -22,57 +22,57 @@ module.exports = {
       .assert.containsText('h6[data-id="sidePanelSwapitTitle"]', 'FILE EXPLORERS')
       .click('*[data-id="fileExplorerNewFilecreateNewFile"]')
       .pause(1000)
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/blank"]')
-      .sendKeys('*[data-id="treeViewLitreeViewItembrowser/blank"] .remixui_items', '5_New_contract.sol')
-      .sendKeys('*[data-id="treeViewLitreeViewItembrowser/blank"] .remixui_items', browser.Keys.ENTER)
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/5_New_contract.sol"]', 7000)
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/blank"]')
+      .sendKeys('*[data-id="treeViewLitreeViewItemworkspace_1/blank"] .remixui_items', '5_New_contract.sol')
+      .sendKeys('*[data-id="treeViewLitreeViewItemworkspace_1/blank"] .remixui_items', browser.Keys.ENTER)
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/5_New_contract.sol"]', 7000)
   },
 
   'Should rename `5_New_contract.sol` to 5_Renamed_Contract.sol': function (browser: NightwatchBrowser) {
     browser
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/5_New_contract.sol"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/5_New_contract.sol"]')
       .renamePath('browser/5_New_contract.sol', '5_Renamed_Contract.sol', 'browser/5_Renamed_Contract.sol')
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/5_Renamed_Contract.sol"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/5_Renamed_Contract.sol"]')
   },
 
   'Should delete file `5_Renamed_Contract.sol` from file explorer': function (browser: NightwatchBrowser) {
     browser
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/5_Renamed_Contract.sol"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/5_Renamed_Contract.sol"]')
       .rightClick('[data-path="browser/5_Renamed_Contract.sol"]')
       .click('*[id="menuitemdelete"]')
       .waitForElementVisible('*[data-id="browserModalDialogContainer-react"]')
       .pause(2000)
       .click('.modal-ok')
-      .waitForElementNotPresent('*[data-id="treeViewLitreeViewItembrowser/5_Renamed_Contract.sol"')
+      .waitForElementNotPresent('*[data-id="treeViewLitreeViewItemworkspace_1/5_Renamed_Contract.sol"')
   },
 
   'Should create a new folder': function (browser: NightwatchBrowser) {
     browser
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/README.txt"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/README.txt"]')
       .click('[data-id="fileExplorerNewFilecreateNewFolder"]')
       .pause(1000)
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/blank"]')
-      .sendKeys('*[data-id="treeViewLitreeViewItembrowser/blank"] .remixui_items', 'Browser_Tests')
-      .sendKeys('*[data-id="treeViewLitreeViewItembrowser/blank"] .remixui_items', browser.Keys.ENTER)
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/Browser_Tests"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/blank"]')
+      .sendKeys('*[data-id="treeViewLitreeViewItemworkspace_1/blank"] .remixui_items', 'Browser_Tests')
+      .sendKeys('*[data-id="treeViewLitreeViewItemworkspace_1/blank"] .remixui_items', browser.Keys.ENTER)
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/Browser_Tests"]')
   },
 
   'Should rename Browser_Tests folder to Browser_E2E_Tests': function (browser: NightwatchBrowser) {
     browser
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/Browser_Tests"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/Browser_Tests"]')
       .renamePath('browser/Browser_Tests', 'Browser_E2E_Tests', 'browser/Browser_E2E_Tests')
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/Browser_E2E_Tests"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/Browser_E2E_Tests"]')
   },
 
   'Should delete Browser_E2E_Tests folder': function (browser: NightwatchBrowser) {
     browser
-      .waitForElementVisible('*[data-id="treeViewLitreeViewItembrowser/Browser_E2E_Tests"]')
+      .waitForElementVisible('*[data-id="treeViewLitreeViewItemworkspace_1/Browser_E2E_Tests"]')
       .rightClick('[data-path="browser/Browser_E2E_Tests"]')
       .click('*[id="menuitemdelete"]')
       .waitForElementVisible('*[data-id="browserModalDialogContainer-react"]')
       .pause(2000)
       .click('.modal-ok')
-      .waitForElementNotPresent('*[data-id="treeViewLitreeViewItembrowser/Browser_E2E_Tests"]')
+      .waitForElementNotPresent('*[data-id="treeViewLitreeViewItemworkspace_1/Browser_E2E_Tests"]')
   },
 
   'Should publish all explorer files to github gist': function (browser: NightwatchBrowser) {
@@ -105,9 +105,9 @@ module.exports = {
       .setValue('*[data-id="fileExplorerFileUpload"]', testData.testFile1)
       .setValue('*[data-id="fileExplorerFileUpload"]', testData.testFile2)
       .setValue('*[data-id="fileExplorerFileUpload"]', testData.testFile3)
-      .waitForElementVisible('[data-id="treeViewLitreeViewItembrowser/editor.test.js"]')
-      .waitForElementVisible('[data-id="treeViewLitreeViewItembrowser/fileExplorer.test.js"]')
-      .waitForElementVisible('[data-id="treeViewLitreeViewItembrowser/generalSettings.test.js"]')
+      .waitForElementVisible('[data-id="treeViewLitreeViewItemworkspace_1/editor.test.js"]')
+      .waitForElementVisible('[data-id="treeViewLitreeViewItemworkspace_1/fileExplorer.test.js"]')
+      .waitForElementVisible('[data-id="treeViewLitreeViewItemworkspace_1/generalSettings.test.js"]')
       .end()
   },
 

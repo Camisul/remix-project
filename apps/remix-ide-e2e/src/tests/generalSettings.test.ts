@@ -20,7 +20,7 @@ module.exports = {
     browser.waitForElementVisible('*[data-id="remixIdeSidePanel"]', 5000)
       .waitForElementVisible('*[data-id="settingsTabGenerateContractMetadataLabel"]', 5000)
       .click('*[data-id="verticalIconsFileExplorerIcons"]')
-      .click('[data-id="treeViewLitreeViewItembrowser/contracts"]')
+      .click('[data-id="treeViewLitreeViewItemworkspace_1/contracts"]')
       .openFile('browser/contracts/3_Ballot.sol')
       .click('*[data-id="verticalIconsKindsolidity"]')
       .pause(2000)

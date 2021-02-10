@@ -1,1 +1,2 @@
-contract test1 { function get () returns (uint) { return 8; }}
+import "./contract2.sol";
+contract test1 { function get  () public returns (uint) { return 8; }}

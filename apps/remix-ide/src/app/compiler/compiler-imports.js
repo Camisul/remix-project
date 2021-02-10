@@ -88,7 +88,7 @@ module.exports = class CompilerImports extends Plugin {
       (error, content, cleanUrl, type, url) => {
         if (error) return cb(error)
         if (this.fileManager) {
-          const browser = this.fileManager.fileProviderOf('browser/')
+          const browser = this.fileManager.getProvider('browser')
           const path = targetPath || type + '/' + cleanUrl
           if (browser) browser.addExternal(path, content, url)
         }

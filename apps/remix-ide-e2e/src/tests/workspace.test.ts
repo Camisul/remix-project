@@ -29,5 +29,13 @@ module.exports = {
       .end()
   },
 
+  'Should create a workspace': function (browser: NightwatchBrowser) {
+    browser
+      .clickLaunchIcon('fileExplorers')
+      .click('*[data-id="workspaceCreate"]')
+      .click('')
+      .end()
+  },
+
   tearDown: sauce
 }

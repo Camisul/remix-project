@@ -110,7 +110,7 @@ module.exports = {
       .clickLaunchIcon('solidity')
       .setSolidityCompilerVersion('soljson-v0.6.12+commit.27d51765.js')
       .clickLaunchIcon('fileExplorers')
-      .click('li[data-id="treeViewLitreeViewItembrowser/externalImport.sol"')
+      .click('li[data-id="treeViewLitreeViewItemworkspace_1/externalImport.sol"')
       .testContracts('withABIEncoderV2.sol', sources[2]['browser/withABIEncoderV2.sol'], ['test'])
       .clickLaunchIcon('udapp')
       .selectContract('test')

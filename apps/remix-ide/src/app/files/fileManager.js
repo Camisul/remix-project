@@ -39,6 +39,7 @@ const createError = (err) => {
 class FileManager extends Plugin {
   constructor (editor, appManager) {
     super(profile)
+    this.mode = 'browser'
     this.openedFiles = {} // list all opened files
     this.events = new EventEmitter()
     this.editor = editor
@@ -46,6 +47,10 @@ class FileManager extends Plugin {
     this._components.registry = globalRegistry
     this.appManager = appManager
     this.init()
+  }
+
+  setMode (mode) {
+    this.mode = mode
   }
 
   /**
@@ -472,18 +477,8 @@ class FileManager extends Plugin {
     }
     if (file) return _openFile(file)
     else {
-      var browserProvider = this._deps.filesProviders.browser
-      browserProvider.resolveDirectory('browser', (error, filesProvider) => {
-        if (error) console.error(error)
-        var fileList = Object.keys(filesProvider)
-        if (fileList.length) {
-          _openFile(browserProvider.type + '/' + fileList[0])
-        } else {
-          // TODO: Only keep `this.emit` (issue#2210)
-          this.emit('noFileSelected')
-          this.events.emit('noFileSelected')
-        }
-      })
+      this.emit('noFileSelected')
+      this.events.emit('noFileSelected')
     }
   }
 
@@ -492,10 +487,13 @@ class FileManager extends Plugin {
   }
 
   fileProviderOf (file) {
-    if (file.indexOf('localhost') === 0) {
+    if (file.startsWith('localhost') || this.mode === 'localhost') {
       return this._deps.filesProviders.localhost
     }
-    return this._deps.filesProviders.browser
+    if (file.startsWith('browser')) {
+      return this._deps.filesProviders.browser
+    }
+    return this._deps.filesProviders.workspace
   }
 
   // returns the list of directories inside path
@@ -505,8 +503,7 @@ class FileManager extends Plugin {
       return new Promise((resolve, reject) => {
         this.readdir(path).then((ls) => {
           const promises = Object.keys(ls).map((item, index) => {
-            const root = (path.indexOf('/') === -1) ? path : path.substr(0, path.indexOf('/'))
-            const curPath = `${root}/${item}` // adding 'browser' or 'localhost'
+            const curPath = `/${item}`
             if (ls[item].isDirectory && !dirPaths.includes(curPath)) {
               dirPaths.push(curPath)
               resolve(dirPaths)

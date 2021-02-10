@@ -63,7 +63,7 @@ module.exports = {
       .addFile('renameFile.js', { content: executeRename })
       .executeScript('remix.exeCurrent()')
       .pause(2000)
-      .waitForElementPresent('[data-id="treeViewLitreeViewItembrowser/old_contract.sol"]')
+      .waitForElementPresent('[data-id="treeViewLitreeViewLitreeViewItemworkspace_1treeViewItembrowser/old_contract.sol"]')
   },
 
   'Should execute `mkdir` api from file manager external api': function (browser: NightwatchBrowser) {
@@ -71,7 +71,7 @@ module.exports = {
       .addFile('mkdirFile.js', { content: executeMkdir })
       .executeScript('remix.exeCurrent()')
       .pause(2000)
-      .waitForElementPresent('[data-id="treeViewLitreeViewItembrowser/Test_Folder"]')
+      .waitForElementPresent('[data-id="treeViewLitreeViewItemworkspace_1/Test_Folder"]')
   },
 
   'Should execute `readdir` api from file manager external api': function (browser: NightwatchBrowser) {
@@ -87,7 +87,7 @@ module.exports = {
       .addFile('removeFile.js', { content: executeRemove })
       .executeScript('remix.exeCurrent()')
       .pause(2000)
-      .waitForElementNotPresent('[data-id="treeViewLitreeViewItembrowser/old_contract.sol"]')
+      .waitForElementNotPresent('[data-id="treeViewLitreeViewItemworkspace_1/old_contract.sol"]')
   },
 
   // TODO: Fix remove root directory prefix for browser and localhost
@@ -96,7 +96,7 @@ module.exports = {
       .addFile('test_jsRemoveFolder.js', { content: executeRemoveOnFolder })
       .executeScript('remix.exeCurrent()')
       .pause(2000)
-      .waitForElementNotPresent('[data-id="treeViewLitreeViewItembrowser/tests"]')
+      .waitForElementNotPresent('[data-id="treeViewLitreeViewItemworkspace_1/tests"]')
       .end()
   },
 

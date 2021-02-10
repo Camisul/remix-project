@@ -16,7 +16,7 @@ module.exports = {
     browser
       .waitForElementVisible('#icon-panel', 10000)
       .clickLaunchIcon('fileExplorers')
-      .click('[data-id="treeViewLitreeViewItembrowser/contracts"]')
+      .click('[data-id="treeViewLitreeViewItemworkspace_1/contracts"]')
       .openFile('browser/contracts/3_Ballot.sol')
       .verifyContracts(['Ballot'])
       .click('#publishOnIpfs')
@@ -61,8 +61,8 @@ module.exports = {
   'Should remember choice after page refresh': function (browser: NightwatchBrowser) {
     browser
       .refresh()
-      .waitForElementVisible('[data-id="treeViewLitreeViewItembrowser/contracts"]')
-      .click('[data-id="treeViewLitreeViewItembrowser/contracts"]')
+      .waitForElementVisible('[data-id="treeViewLitreeViewItemworkspace_1/contracts"]')
+      .click('[data-id="treeViewLitreeViewItemworkspace_1/contracts"]')
       .openFile('browser/contracts/1_Storage.sol')
       .clickLaunchIcon('udapp')
       .waitForElementPresent('*[data-id="contractDropdownIpfsCheckbox"]')

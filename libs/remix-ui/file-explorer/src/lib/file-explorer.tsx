@@ -25,6 +25,7 @@ export const FileExplorer = (props: FileExplorerProps) => {
     focusPath: null,
     files: [],
     fileManager: null,
+    filesProvider,
     ctrlKey: false,
     newFileName: '',
     actions: [],
@@ -121,7 +122,7 @@ export const FileExplorer = (props: FileExplorerProps) => {
         return { ...prevState, fileManager, files, actions }
       })
     })()
-  }, [])
+  }, [name])
 
   useEffect(() => {
     if (state.fileManager) {
@@ -260,20 +261,21 @@ export const FileExplorer = (props: FileExplorerProps) => {
     return new Promise((resolve) => {
       filesProvider.resolveDirectory(folderPath, (error, fileTree) => {
         if (error) console.error(error)
-        const files = normalize(folderPath, fileTree)
+        const files = normalize(fileTree)
 
         resolve(files)
       })
     })
   }
 
-  const normalize = (path, filesList): File[] => {
+  const normalize = (filesList): File[] => {
     const folders = []
     const files = []
-    const prefix = path.split('/')[0]
 
     Object.keys(filesList || {}).forEach(key => {
-      const path = prefix + '/' + key
+      key = key.replace(/^\/|\/$/g, '') // remove first and last slash
+      let path = key
+      path = path.replace(/^\/|\/$/g, '') // remove first and last slash
 
       if (filesList[key].isDirectory) {
         folders.push({
@@ -601,7 +603,7 @@ export const FileExplorer = (props: FileExplorerProps) => {
     }
 
     // If 'id' is not defined, it is not a gist update but a creation so we have to take the files from the browser explorer.
-    const folder = id ? 'browser/gists/' + id : 'browser/'
+    const folder = id ? '/gists/' + id : '/'
 
     packageFiles(filesProvider, folder, async (error, packaged) => {
       if (error) {

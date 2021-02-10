@@ -168,7 +168,7 @@ function runTests (browser: NightwatchBrowser) {
   browser
     .waitForElementPresent('*[data-id="verticalIconsKindfileExplorers"]')
     .clickLaunchIcon('fileExplorers')
-    .click('*[data-id="treeViewLitreeViewItembrowser/contracts"]')
+    .click('*[data-id="treeViewLitreeViewItemworkspace_1/contracts"]')
     .openFile('browser/contracts/3_Ballot.sol')
     .clickLaunchIcon('solidityUnitTesting')
     .pause(500)

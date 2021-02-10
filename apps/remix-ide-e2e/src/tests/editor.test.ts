@@ -101,26 +101,26 @@ module.exports = {
   },
 
   'Should remove 1 highlight from source code': function (browser: NightwatchBrowser) {
-    browser.waitForElementVisible('li[data-id="treeViewLitreeViewItembrowser/removeSourcehighlightScript.js"]')
-      .click('li[data-id="treeViewLitreeViewItembrowser/removeSourcehighlightScript.js"]')
+    browser.waitForElementVisible('li[data-id="treeViewLitreeViewItemworkspace_1/removeSourcehighlightScript.js"]')
+      .click('li[data-id="treeViewLitreeViewItemworkspace_1/removeSourcehighlightScript.js"]')
       .pause(2000)
       .executeScript('remix.exeCurrent()')
-      .waitForElementVisible('li[data-id="treeViewLitreeViewItembrowser/contracts"]')
-      .click('li[data-id="treeViewLitreeViewItembrowser/contracts"]')
-      .waitForElementVisible('li[data-id="treeViewLitreeViewItembrowser/contracts/3_Ballot.sol"]')
-      .click('li[data-id="treeViewLitreeViewItembrowser/contracts/3_Ballot.sol"]')
+      .waitForElementVisible('li[data-id="treeViewLitreeViewItemworkspace_1/contracts"]')
+      .click('li[data-id="treeViewLitreeViewItemworkspace_1/contracts"]')
+      .waitForElementVisible('li[data-id="treeViewLitreeViewItemworkspace_1/contracts/3_Ballot.sol"]')
+      .click('li[data-id="treeViewLitreeViewItemworkspace_1/contracts/3_Ballot.sol"]')
       .waitForElementNotPresent('.highlightLine32')
       .checkElementStyle('.highlightLine40', 'background-color', 'rgb(8, 108, 181)')
       .checkElementStyle('.highlightLine50', 'background-color', 'rgb(8, 108, 181)')
   },
 
   'Should remove all highlights from source code': function (browser: NightwatchBrowser) {
-    browser.waitForElementVisible('li[data-id="treeViewLitreeViewItembrowser/removeAllSourcehighlightScript.js"]')
-      .click('li[data-id="treeViewLitreeViewItembrowser/removeAllSourcehighlightScript.js"]')
+    browser.waitForElementVisible('li[data-id="treeViewLitreeViewItemworkspace_1/removeAllSourcehighlightScript.js"]')
+      .click('li[data-id="treeViewLitreeViewItemworkspace_1/removeAllSourcehighlightScript.js"]')
       .pause(2000)
       .executeScript('remix.exeCurrent()')
-      .waitForElementVisible('li[data-id="treeViewLitreeViewItembrowser/contracts/3_Ballot.sol"]')
-      .click('li[data-id="treeViewLitreeViewItembrowser/contracts/3_Ballot.sol"]')
+      .waitForElementVisible('li[data-id="treeViewLitreeViewItemworkspace_1/contracts/3_Ballot.sol"]')
+      .click('li[data-id="treeViewLitreeViewItemworkspace_1/contracts/3_Ballot.sol"]')
       .pause(2000)
       .waitForElementNotPresent('.highlightLine32')
       .waitForElementNotPresent('.highlightLine40')
